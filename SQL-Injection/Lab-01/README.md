@@ -7,6 +7,8 @@
 ### Objective
 This lab demonstrates how an SQL injection vulnerability in a product category filter can be used to bypass the application's filtering logic.
 The objective is to retrieve all products, including those that are intended to remain hidden from users.
+![Lab Overview](lab1-solved.png)
+
 
 ### Vulnerability Overview
 The application passes the value of the category parameter directly into an SQL query without proper sanitization or parameterization. 
@@ -21,6 +23,8 @@ Because the input is treated as part of the SQL statement, an attacker can alter
 
 ### Payload
 Gifts' OR 1=1--
+![Lab Solved](lab1-solved1.png)
+
 
 ### Why It Works
 The vulnerability exists because user input is concatenated directly into an SQL statement instead of being treated as data.
