@@ -16,7 +16,7 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 
 | Category | Completed |
 |----------|----------:|
-| SQL Injection | 1 |
+| SQL Injection | 2 |
 | XSS | 0 |
 | CSRF | 0 |
 | Authentication | 0 |
@@ -24,3 +24,4 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 ## SQL Injection
 
 - [Lab 01 – SQL Injection in WHERE Clause Allowing Retrieval of Hidden Data](SQL-Injection/Lab-01/)
+- [Lab 02 – SQL Injection Vulnerability Allowing Login Bypass](Lab-02/) 
