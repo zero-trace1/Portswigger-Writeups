@@ -9,7 +9,7 @@
 This lab demonstrates the most basic form of a reflected XSS vulnerability: a search feature that takes user input and reflects it
 straight back into the page's HTML with no encoding or sanitization whatsoever. The objective was to perform a cross-site scripting
 attack that calls the alert function.
-![](lab1-overview.png)
+![Lab Overview](lab1-overview.png)
 
 ### Vulnerability
 
@@ -33,14 +33,13 @@ displayed as plain text.
    ```
    html   <script>alert(1)</script>
    ```
-   ![](lab1-script.png)
+ ![Payload Entered](lab1-script.png)
    
 3. **Submit and Observe**
    Clicking "Search" sent the payload to the server as a query string parameter:
    Because the response reflected this value with zero encoding, the browser parsed ```<script>alert(1)</script>``` as a        real 
    script tag and executed it immediately, popping a JavaScript alert box:
-   ![](lab1-result.png)
-
+  ![Alert Executed](lab1-result.png)
 4. **Confirm the Lab is Solved**
    The alert firing on the page is enough to satisfy the lab's success condition, flipping the lab status from
    "Not solved" to "Solved."
