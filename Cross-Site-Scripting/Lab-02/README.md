@@ -15,7 +15,7 @@ The vulnerable page contains a comment form where user input is stored and later
 
 ![Blog Homepage](lab2-overview.png)
 
-**Step 2: Inject the Payload:**                                          
+**Step 2: Inject the Payload:**                                                                                                    
 In the comment field, I entered the following payload:
 ```
 <script>alert(1)</script>                                                                  
