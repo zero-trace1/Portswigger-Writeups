@@ -12,25 +12,28 @@ I started by opening the vulnerable blog post titled "Spider Web Security." This
 
 **Step 1: Open the Blog Post:**                                                 
 The vulnerable page contains a comment form where user input is stored and later displayed.
+
 ![Blog Homepage](lab2-overview.png)
 
 **Step 2: Inject the Payload:**                                          
 In the comment field, I entered the following payload:
 ```
-<script>alert(1)</script>
+<script>alert(1)</script>                                                                  
 ```
-I filled in the required fields:
-Comment:``` <script>alert(1)</script>```
-Name: ```jh```
-Email: ```jh2@gmail.com```
-Website: ```Left blank```
+I filled in the required fields:                                                          
+Comment:``` <script>alert(1)</script>```                                                  
+Name: ```jh```                                                                                              
+Email: ```jh2@gmail.com```                                                     
+Website: ```Left blank```                                                                                 
 After submitting the form, the comment was successfully stored by the application.
+
 ![script](lab2-script.png)
 
 **Step 3: Confirm the Exploit**
 After the comment was submitted, the application accepted it without filtering the input. When the stored comment was rendered on the page, the JavaScript executed, triggering the alert(1) popup.
 
 The lab was then marked as solved.
+
 ![lab solved](lab2-solved.png)
 
 ### Why the Vulnerability Exists
