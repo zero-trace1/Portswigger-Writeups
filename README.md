@@ -21,10 +21,14 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 | CSRF | 0 |
 | Authentication | 0 |
 
+
 ## SQL Injection
 
 - [Lab 01 – SQL Injection in WHERE Clause Allowing Retrieval of Hidden Data](SQL-Injection/Lab-01/)
-- [Lab 02 – SQL Injection Vulnerability Allowing Login Bypass](Lab-02/) 
-- [Lab 03 - SQL injection attack, querying the database type and version on Oracle](Lab-03/)
+- [Lab 02 – SQL Injection Vulnerability Allowing Login Bypass](SQL-Injection/Lab-02/)
+- [Lab 03 – SQL Injection Attack, Querying the Database Type and Version on Oracle](SQL-Injection/Lab-03/)
 
-- [Lab 01 - Cross-site scripting, Reflected XSS into HTML context with nothing encoded](Lab-01)
+## Cross-Site Scripting (XSS)
+
+- [Lab 01 – Reflected XSS into HTML Context with Nothing Encoded](Cross-Site-Scripting/Lab-01/)
+- [Lab 02 – Stored XSS into HTML Context with Nothing Encoded](Cross-Site-Scripting/Lab-02/)
