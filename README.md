@@ -17,7 +17,7 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 | Category | Completed |
 |----------|----------:|
 | SQL Injection | 3 |
-| XSS | 1 |
+| XSS | 2 |
 | CSRF | 0 |
 | Authentication | 0 |
 
