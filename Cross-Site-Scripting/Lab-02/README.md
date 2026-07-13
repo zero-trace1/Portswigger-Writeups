@@ -29,7 +29,7 @@ After submitting the form, the comment was successfully stored by the applicatio
 
 ![script](lab2-script.png)
 
-**Step 3: Confirm the Exploit**
+**Step 3: Confirm the Exploit**                                                      
 After the comment was submitted, the application accepted it without filtering the input. When the stored comment was rendered on the page, the JavaScript executed, triggering the alert(1) popup.
 
 The lab was then marked as solved.
