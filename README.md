@@ -17,7 +17,7 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 | Category | Completed |
 |----------|----------:|
 | SQL Injection | 3 |
-| XSS | 2 |
+| XSS | 3 |
 | CSRF | 0 |
 | Authentication | 0 |
 
@@ -32,3 +32,4 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 
 - [Lab 01 – Reflected XSS into HTML Context with Nothing Encoded](Cross-Site-Scripting/Lab-01/)
 - [Lab 02 – Stored XSS into HTML Context with Nothing Encoded](Cross-Site-Scripting/Lab-02/)
+- [Lab 03 - DOM XSS in document.write sink using source location.search](Cross-Site-Scripting/Lab-03/)  
