@@ -1,4 +1,4 @@
-### Lab 11: DOM XSS in AngularJS Expression with Angle Brackets and Double Quotes HTML-Encoded
+###  DOM XSS in AngularJS Expression with Angle Brackets and Double Quotes HTML-Encoded
 
 **Category:** Cross-Site Scripting (XSS)                                                              
 **Difficulty:** Practitioner                                                                       
