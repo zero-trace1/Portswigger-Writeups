@@ -17,7 +17,7 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 | Category | Completed |
 |----------|----------:|
 | SQL Injection | 3 |
-| XSS | 4 |
+| XSS | 7 |
 | CSRF | 0 |
 | Authentication | 0 |
 
@@ -34,3 +34,6 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 - [Lab 02 – Stored XSS into HTML Context with Nothing Encoded](Cross-Site-Scripting/Lab-02/)
 - [Lab 03 - DOM XSS in document.write sink using source location.search](Cross-Site-Scripting/Lab-03/)
 - [Lab 10 - DOM XSS in document.write Sink Using Source location.search Inside a Select Element](Cross-Site-Scripting/Lab-10/)
+- [Lab 11 - DOM XSS in AngularJS Expression with Angle Brackets and Double Quotes HTML-Encoded](Cross-Site-Scripting/Lab-11/)
+- [Lab 12 - Reflected DOM XSS](Cross-Site-Scripting/Lab-12/)
+- [Lab 13 - Stored DOM XSS](Cross-Site-Scripting/Lab-13/)
