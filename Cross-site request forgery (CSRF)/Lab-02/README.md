@@ -4,7 +4,7 @@
 **Difficulty:** Practitioner  
 **Platform:** PortSwigger Web Security Academy
 
-## Overview
+### Overview
 This lab demonstrates a CSRF vulnerability where the application validates the CSRF token **only for POST requests**. 
 By changing the request method from **POST** to **GET**, the server processes the request without enforcing CSRF protection.
 
@@ -13,13 +13,11 @@ GET request, changing the victim's email address without their consent.
 
 
 ### Objective
-
 Exploit the application's inconsistent CSRF validation and change the victim's email address using a forged request.
 
 
 ### Steps
-
-## Step 1: Observe the Email Change Functionality
+Step 1: Observe the Email Change Functionality
 
 Log in to the application and navigate to **My Account**. Enter a new email address and intercept the request using Burp
 Suite.
@@ -27,7 +25,7 @@ Suite.
 ![Account Page](lab-2-1.png)
 
 
-## Step 2: Capture the POST Request
+Step 2: Capture the POST Request
 
 Intercept the email update request in Burp Suite Repeater.
 
@@ -41,7 +39,7 @@ The original request uses:
 
 ![Captured POST Request](lab-2-2.png)
 
-## Step 3: Verify the Request
+Step 3: Verify the Request
 
 Modify the email value and resend the POST request.
 
@@ -50,7 +48,7 @@ The server accepts the request because a valid CSRF token is supplied.
 ![POST Request Successful](lab-2-3.png)
 
 
-## Step 4: Change POST to GET
+Step 4: Change POST to GET
 
 Convert the request into a GET request by:
 
@@ -71,7 +69,7 @@ This confirms that CSRF validation depends on the request method rather than the
 ![GET Request Accepted](lab-2-4.png)
 
 
-## Step 5: Generate a CSRF PoC
+Step 5: Generate a CSRF PoC
 
 Right-click the GET request and select:
 
@@ -83,13 +81,13 @@ Burp generates HTML that automatically submits the forged request.
 
 ![Generated CSRF PoC](lab-2-5.png)
 
-## Step 6: Upload the PoC to the Exploit Server
+Step 6: Upload the PoC to the Exploit Server
 
 Copy the generated HTML into the exploit server and replace the email with the attacker-controlled email address.
 
 ![Exploit Server HTML](lab-2-6.png)
 
-## Step 7: Test the Exploit
+Step 7: Test the Exploit
 
 Click **View Exploit**.
 
@@ -98,7 +96,7 @@ The victim's browser automatically sends the forged GET request and updates the 
 ![Exploit Working](lab-2-7.png)
 
 
-## Step 8: Deliver the Exploit
+Step 8: Deliver the Exploit
 
 Click **Deliver exploit to victim**.
 
@@ -107,7 +105,7 @@ The victim visits the malicious page, and the browser performs the unauthorized 
 
 ![Deliver Exploit](lab-2-8.png)
 
-## Step 9: Lab Solved
+Step 9: Lab Solved
 
 After the exploit is delivered successfully, PortSwigger marks the lab as solved.
 
