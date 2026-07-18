@@ -18,7 +18,7 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 |----------|----------:|
 | SQL Injection | 3 |
 | XSS | 7 |
-| CSRF | 0 |
+| CSRF | 2 |
 | Authentication | 0 |
 
 
@@ -37,3 +37,8 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 - [Lab 11 - DOM XSS in AngularJS Expression with Angle Brackets and Double Quotes HTML-Encoded](Cross-Site-Scripting/Lab-11/)
 - [Lab 12 - Reflected DOM XSS](Cross-Site-Scripting/Lab-12/)
 - [Lab 13 - Stored DOM XSS](Cross-Site-Scripting/Lab-13/)
+
+## Cross-site request forgery (CSRF)
+
+- [Lab 01 - CSRF vulnerability with no defenses](Cross-site-request-forgery-(CSRF)/Lab-01/)
+- [Lab 02 - CSRF Where Token Validation Depends on Request Method](Cross-site-request-forgery-(CSRF)/Lab-02/)
