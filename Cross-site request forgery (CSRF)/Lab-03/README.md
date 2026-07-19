@@ -48,7 +48,7 @@ Example:
 ```http
 POST /my-account/change-email HTTP/2
 
-email=roko8@gmail.com
+email=roko%@gmail.com
 ```
 
 The request succeeds because the server only checks the token if it exists.
