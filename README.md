@@ -18,7 +18,7 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 |----------|----------:|
 | SQL Injection | 3 |
 | XSS | 7 |
-| CSRF | 2 |
+| CSRF | 5 |
 | Authentication | 0 |
 
 
@@ -42,3 +42,6 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 
 - [Lab 01 - CSRF vulnerability with no defenses](Cross-site-request-forgery-(CSRF)/Lab-01/)
 - [Lab 02 - CSRF Where Token Validation Depends on Request Method](Cross-site-request-forgery-(CSRF)/Lab-02/)
+- [Lab 03 - CSRF Where Token Validation Depends on Token Being Present](Cross-site-request-forgery-(CSRF)/Lab-03/)
+- [Lab 04 - CSRF Where Token Is Not Tied to User Session](Cross-site-request-forgery-(CSRF)/Lab-04/)
+- [Lab 05 - CSRF where token is tied to non-session cookie](Cross-site-request-forgery-(CSRF)/Lab-05/)
