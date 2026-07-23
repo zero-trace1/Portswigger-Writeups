@@ -1,4 +1,4 @@
-### CSRF Where Token Is Duplicated in a Cookie
+### CSRF where token is tied to non-session cookie
 
 **Category:** Cross-Site Request Forgery (CSRF)  
 **Difficulty:** Practitioner  
