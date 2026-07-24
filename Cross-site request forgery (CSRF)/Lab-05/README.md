@@ -93,11 +93,13 @@ This tells us that the application validates the token, but we still don't know 
 
 
 
-# Step 3 – Inspect the HTML Form
+# Step 3 – Capture Carlos's CSRF Token
 
-Open the email change page and inspect the HTML source.
+Log in as **Carlos** and navigate to the **My Account** page.
 
-You'll find a hidden input field similar to:
+Inspect the email update form using your browser's Developer Tools (or Burp's Inspector). The form contains a hidden `csrf` input field that holds Carlos's current CSRF token.
+
+Example:
 
 ```html
 <input type="hidden"
@@ -105,7 +107,7 @@ name="csrf"
 value="QSVOzZDt89HdFiuGvbRlQoUBQwXu5KTn">
 ```
 
-This is the token submitted whenever the form is sent.
+Copy this CSRF token, as it will be used later when creating the CSRF proof of concept.
 
 ![Hidden CSRF token inside HTML form](lab-5-3.png)
 
