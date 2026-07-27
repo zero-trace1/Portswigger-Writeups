@@ -1,6 +1,6 @@
 ### Password Reset Broken Logic
 
-**Platform:** PortSwigger Web Security Academy
+**Platform:** PortSwigger Web Security Academy                                                                      
 **Category:** Authentication  
 **Difficulty:** Apprentice  
 
