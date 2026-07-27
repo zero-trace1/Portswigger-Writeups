@@ -19,7 +19,7 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 | SQL Injection | 3 |
 | XSS | 7 |
 | CSRF | 5 |
-| Authentication | 0 |
+| Authentication | 3 |
 
 
 ## SQL Injection
@@ -48,6 +48,6 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 
 ## Authentication
 
-- [Lab 01 - Username Enumeration via Different Responses](Lab-01/)
-- [Lab 02 - 2FA Simple Bypass](Lab-02/)
-- [Lab 03 - Password Reset Broken Logic](Lab-03/)
+- [Lab 01 - Username Enumeration via Different Responses](Authentication/Lab-01/)
+- [Lab 02 - 2FA Simple Bypass](Authentication/Lab-02/)
+- [Lab 03 - Password Reset Broken Logic](Authentication/Lab-03/)
