@@ -69,7 +69,7 @@ Right-clicked the captured request and selected:
 Send to Intruder
 ```
 
-![Step 2 - Send Request to Intruder](images/lab-1-2.png)
+![Step 2 - Send Request to Intruder](lab-1-2.png)
 
 
 
@@ -90,7 +90,7 @@ Kept the password fixed while testing usernames.
 Sniper
 ```
 
-![Step 3 - Configure Username Payload](images/lab-1-3.png)
+![Step 3 - Configure Username Payload](lab-1-3.png)
 
 
 
@@ -100,7 +100,7 @@ Loaded the provided username list into the payload section.
 
 Started the Intruder attack.
 
-![Step 4 - Load Username Wordlist](images/lab-1-4.png)
+![Step 4 - Load Username Wordlist](lab-1-4.png)
 
 
 # Step 5 — Identify the Valid Username
@@ -127,7 +127,7 @@ This difference indicated a valid username.
 arizona
 ```
 
-![Step 5 - Identify Valid Username](images/lab-1-5.png)
+![Step 5 - Identify Valid Username](lab-1-5.png)
 
 
 # Step 6 — Brute Force the Password
@@ -143,7 +143,7 @@ Loaded the password list into Intruder.
 
 Started another Sniper attack.
 
-![Step 6 - Brute Force Password](images/lab-1-6.png)
+![Step 6 - Brute Force Password](lab-1-6.png)
 
 
 # Step 7 — Find the Correct Password
@@ -169,7 +169,7 @@ Username: arizona
 Password: 777777
 ```
 
-![Step 7 - Find Correct Password](images/lab-1-7.png)
+![Step 7 - Find Correct Password](lab-1-7.png)
 
 
 
@@ -179,7 +179,7 @@ Logged in successfully using the discovered credentials.
 
 The application redirected to the user account page and the lab status changed to **Solved**.
 
-![Step 8 - Lab Solved](images/lab-1-8.png)
+![Step 8 - Lab Solved](lab-1-8.png)
 
 
 ### Root Cause
