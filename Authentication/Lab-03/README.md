@@ -89,24 +89,28 @@ The application accepts the request and resets Carlos's password to the new pass
 ![Step 4](lab-3-4.png)
 
 
-# Step 5: Log In as Carlos
+# Step 5: Password Reset Successful
 
-Return to the login page and authenticate using:
-
-- **Username:** `carlos`
-- **Password:** `peter`
-
-The password has now been changed successfully.
+After forwarding the modified request, Burp Suite follows the redirection and returns a **200 OK** response, indicating that the password reset request was processed successfully.
 
 ![Step 5](lab-3-5.png)
 
 
-# Step 6: Lab Solved
+# Step 6: Log In as Carlos
 
-After logging in with the new password, you gain access to Carlos's account and complete the lab.
+Return to the login page and sign in using the updated credentials:
+
+- **Username:** `carlos`
+- **Password:** `peter`
+
+You will successfully authenticate as Carlos.
 
 ![Step 6](lab-3-6.png)
 
+
+## Lab Solved
+
+After logging in as Carlos with the new password, you gain access to his account and complete the lab.
 
 ### Vulnerability
 
