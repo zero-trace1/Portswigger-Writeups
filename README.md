@@ -45,3 +45,9 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 - [Lab 03 - CSRF Where Token Validation Depends on Token Being Present](Cross-site%20request%20forgery%20(CSRF)/Lab-03/)
 - [Lab 04 - CSRF Where Token Is Not Tied to User Session](Cross-site%20request%20forgery%20(CSRF)/Lab-04/)
 - [Lab 05 - CSRF Where Token Is Tied to Non-Session Cookie](Cross-site%20request%20forgery%20(CSRF)/Lab-05/)
+
+## Authentication
+
+- [Lab 01 - Username Enumeration via Different Responses](Lab-01/)
+- [Lab 02 - 2FA Simple Bypass](Lab-02/)
+- [Lab 03 - Password Reset Broken Logic](Lab-03/)
