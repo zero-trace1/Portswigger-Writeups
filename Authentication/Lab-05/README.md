@@ -30,6 +30,7 @@ a different IP address for every request.
 - Burp Intruder
 - Firefox Browser
 
+
 # STEPS
 
 # Step 1: Capture the Login Request
@@ -65,7 +66,6 @@ While testing, pay close attention to the response times.
 
 This happens because the server performs password verification only after confirming that the username exists.
 
-![](lab-5-2.png)
 
 
 
@@ -83,7 +83,8 @@ Add the following payload positions:
 Replace the password with a very long string (approximately 100 characters). A longer password increases the processing
 time, making the timing difference easier to identify.
 
-![](lab-5-3.png)
+![](lab-5-2.png)
+
 
 
 # Step 4: Configure the Payloads
@@ -98,7 +99,6 @@ Use the following settings:
 
 Each request will use a different spoofed IP address, preventing the application from blocking the attack.
 
-![](lab-5-4.png)
 
 Next, configure **Payload Position 2**.
 
@@ -106,7 +106,7 @@ Load the provided username wordlist using the **Simple List** payload type.
 
 Each request will now test a different username while simultaneously changing the spoofed IP address.
 
-![](lab-5-5.png)
+![](lab-5-3.png)
 
 
 
@@ -139,6 +139,7 @@ Therefore, the valid username is:
 ```
 user
 ```
+![](lab-5-5.png)
 
 ![](lab-5-6.png)
 
@@ -159,8 +160,6 @@ user
 Add a payload position only to the **password** parameter and load the provided password wordlist.
 
 Start the Intruder attack.
-
-![](lab-5-7.png)
 
 
 
@@ -186,6 +185,7 @@ The password associated with the **302** response is the correct password.
 
 Use the discovered credentials to log in to the application and access the user account page to successfully solve the lab.
 
+![](lab-5-6.png)
 
 
 ### Result
@@ -194,6 +194,7 @@ Successfully bypassed the IP-based brute-force protection by spoofing the client
 Response timing differences were used to identify a valid username, and a password brute-force attack successfully 
 discovered the correct credentials, allowing authentication and completion of the lab.
 
+![](lab-5-7.png)
 
 ### Remediation
 
