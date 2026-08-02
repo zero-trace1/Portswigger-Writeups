@@ -61,7 +61,7 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 - [Lab 04 - Blind SSRF with Out-of-Band Detection](Server-side%20request%20forgery%20(SSRF)/Lab-04/)
 - [Lab 05 - Blind SSRF with Shellshock Exploitation](Server-side%20request%20forgery%20(SSRF)/Lab-05/)
 
-## Access Control
+## Access Control Vulnerabilities
 
-- [Lab 01 - Unprotected Admin Functionality](Access-Control-Vulnerabilities/Lab-01/)
-- [Lab 02 - Unprotected Admin Functionality with Unpredictable URL](Access-Control-Vulnerabilities/Lab-02/)    
+-- [Lab 01 - Unprotected Admin Functionality](Access-Control-Vulnerabilities/Lab-01/)
+- [Lab 02 - Unprotected Admin Functionality with Unpredictable URL](Access-Control-Vulnerabilities/Lab-02/)   
