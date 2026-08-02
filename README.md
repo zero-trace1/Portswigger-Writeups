@@ -55,11 +55,11 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 
 ## Server-Side Request Forgery (SSRF)
 
-- [Lab 01 - Basic SSRF Against the Local Server](Server-Side-Request-Forgery-SSRF/Lab-01/)
-- [Lab 02 - SSRF with Blacklist-based Input Filter](Server-Side-Request-Forgery-SSRF/Lab-02/)
-- [Lab 03 - SSRF with Filter Bypass via Open Redirection](Server-Side-Request-Forgery-SSRF/Lab-03/)
-- [Lab 04 - Blind SSRF with Out-of-Band Detection](Server-Side-Request-Forgery-SSRF/Lab-04/)
-- [Lab 05 - Blind SSRF with Shellshock Exploitation](Server-Side-Request-Forgery-SSRF/Lab-05/)
+- [Lab 01 - Basic SSRF Against the Local Server](Server-side%20request%20forgery%20(SSRF)/Lab-01/)
+- [Lab 02 - SSRF with Blacklist-based Input Filter](Server-side%20request%20forgery%20(SSRF)/Lab-02/)
+- [Lab 03 - SSRF with Filter Bypass via Open Redirection](Server-side%20request%20forgery%20(SSRF)/Lab-03/)
+- [Lab 04 - Blind SSRF with Out-of-Band Detection](Server-side%20request%20forgery%20(SSRF)/Lab-04/)
+- [Lab 05 - Blind SSRF with Shellshock Exploitation](Server-side%20request%20forgery%20(SSRF)/Lab-05/)
 
 ## Access Control
 
