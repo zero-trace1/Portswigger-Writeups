@@ -21,7 +21,7 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 | Cross-Site Request Forgery (CSRF) | 5 |
 | Authentication | 3 |
 | Access Control | 2 |
-| Server-Side Request Forgery (SSRF) | 3 |
+| Server-Side Request Forgery (SSRF) | 5 |
 
 ## SQL Injection
 
