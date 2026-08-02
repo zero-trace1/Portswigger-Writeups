@@ -10,17 +10,18 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 - Authentication
 - Server-Side Request Forgery (SSRF)
 - File Upload
-- Access Control
+- Access Control Vulnerabilities
 
 ## Progress
 
 | Category | Completed |
 |----------|----------:|
 | SQL Injection | 3 |
-| XSS | 7 |
-| CSRF | 5 |
+| Cross-Site Scripting (XSS) | 7 |
+| Cross-Site Request Forgery (CSRF) | 5 |
 | Authentication | 3 |
-
+| Access Control | 2 |
+| Server-Side Request Forgery (SSRF) | 3 |
 
 ## SQL Injection
 
