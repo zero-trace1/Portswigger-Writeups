@@ -63,5 +63,5 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 
 ## Access Control Vulnerabilities
 
-- [Lab 01 - Unprotected Admin Functionality](Access-Control-Vulnerabilities/Lab-01/)
-- [Lab 02 - Unprotected Admin Functionality with Unpredictable URL](Access-Control-Vulnerabilities/Lab-02/)   
+- [Lab 01 - Unprotected Admin Functionality](Access%20Control%20Vulnerabilities/Lab-01/)
+- [Lab 02 - Unprotected Admin Functionality with Unpredictable URL](Access%20Control%20Vulnerabilities/Lab-02/)
