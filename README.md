@@ -52,3 +52,16 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 - [Lab 01 - Username Enumeration via Different Responses](Authentication/Lab-01/)
 - [Lab 02 - 2FA Simple Bypass](Authentication/Lab-02/)
 - [Lab 03 - Password Reset Broken Logic](Authentication/Lab-03/)
+
+## Server-Side Request Forgery (SSRF)
+
+- [Lab 01 - Basic SSRF Against the Local Server](Server-Side-Request-Forgery-SSRF/Lab-01/)
+- [Lab 02 - SSRF with Blacklist-based Input Filter](Server-Side-Request-Forgery-SSRF/Lab-02/)
+- [Lab 03 - SSRF with Filter Bypass via Open Redirection](Server-Side-Request-Forgery-SSRF/Lab-03/)
+- [Lab 04 - Blind SSRF with Out-of-Band Detection](Server-Side-Request-Forgery-SSRF/Lab-04/)
+- [Lab 05 - Blind SSRF with Shellshock Exploitation](Server-Side-Request-Forgery-SSRF/Lab-05/)
+
+## Access Control
+
+- [Lab 01 - Unprotected Admin Functionality](Access-Control/Lab-01/)
+- [Lab 02 - Unprotected Admin Functionality with Unpredictable URL](Access-Control/Lab-02/)    
