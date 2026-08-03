@@ -225,4 +225,4 @@ This is a classic **Privilege Escalation** vulnerability caused by broken access
 - Client-controlled parameters should never determine user privileges.
 - Always enforce authorization checks on the server.
 - Test every hidden parameter for privilege escalation opportunities.
-```
+
