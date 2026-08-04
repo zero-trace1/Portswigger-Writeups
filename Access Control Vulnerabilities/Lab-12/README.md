@@ -63,6 +63,10 @@ This is the vulnerable confirmation step.
 
 ![](lab-12-3.png)
 
+
+
+![](lab-12-4.png)
+
 ---
 
 # Step 4: Open a Private Browser and Log in as Wiener
@@ -76,7 +80,7 @@ Log in using the non-administrator account:
 
 After logging in, open the browser's Developer Tools and copy **Wiener's session cookie**.
 
-![](lab-12-9.png)
+![](lab-12-5.png)
 
 ---
 
@@ -105,7 +109,7 @@ Location: /admin
 
 This indicates that the confirmation step accepted the low-privileged user's session because it lacks proper access control.
 
-![](lab-12-4.png)
+![](lab-12-6.png)
 
 ---
 
@@ -116,8 +120,6 @@ Click **Follow redirection** in Burp Repeater.
 The redirected request returns **401 Unauthorized**, confirming that Wiener still cannot directly access the admin panel.
 
 This behavior shows that the application protects the admin page itself, but not the confirmation endpoint.
-
-![](lab-12-5.png)
 
 ---
 
@@ -145,7 +147,7 @@ username=wiener&action=upgrade
 
 Send the request.
 
-![](lab-12-6.png)
+![](lab-12-7.png)
 
 ---
 
@@ -188,7 +190,7 @@ Location: /admin
 
 indicating that the confirmation has completed successfully for Wiener.
 
-![](lab-12-7.png)
+![](lab-12-8.png)
 
 ---
 
@@ -198,11 +200,11 @@ Refresh the browser.
 
 Wiener has now been promoted to **Administrator**, and the lab is successfully solved.
 
-![](lab-12-8.png)
+![](lab-12-9.png)
 
 ---
 
-# Vulnerability
+### Vulnerability
 
 The application performs the privilege escalation using a **two-step workflow**:
 
