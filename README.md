@@ -22,6 +22,7 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 | Authentication | 3 |
 | Access Control | 2 |
 | Server-Side Request Forgery (SSRF) | 5 |
+| Access Control Vulnerabilities | 7 |
 
 ## SQL Injection
 
@@ -65,3 +66,8 @@ This repository contains my write-ups and notes for labs completed on the PortSw
 
 - [Lab 01 - Unprotected Admin Functionality](Access%20Control%20Vulnerabilities/Lab-01/)
 - [Lab 02 - Unprotected Admin Functionality with Unpredictable URL](Access%20Control%20Vulnerabilities/Lab-02/)
+- [Lab 03 - User Role Controlled by Request Parameter](Access%20Control%20Vulnerabilities/Lab-03/)
+- [Lab 04 - User Role Can Be Modified in User Profile](Access%20Control%20Vulnerabilities/Lab-04/)
+- [Lab 05 - User ID Controlled by Request Parameter](Access%20Control%20Vulnerabilities/Lab-05/)
+- [Lab 9 - Insecure Direct Object References (IDOR)](Access%20Control%20Vulnerabilities/Lab-9/)
+- [Lab 12 - Multi-step Process with No Access Control on One Step](Access%20Control%20Vulnerabilities/Lab-12/)
