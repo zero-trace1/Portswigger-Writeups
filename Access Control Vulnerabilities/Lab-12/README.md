@@ -109,7 +109,6 @@ Location: /admin
 
 This indicates that the confirmation step accepted the low-privileged user's session because it lacks proper access control.
 
-![](lab-12-6.png)
 
 ---
 
@@ -120,6 +119,8 @@ Click **Follow redirection** in Burp Repeater.
 The redirected request returns **401 Unauthorized**, confirming that Wiener still cannot directly access the admin panel.
 
 This behavior shows that the application protects the admin page itself, but not the confirmation endpoint.
+
+![](lab-12-6.png)
 
 ---
 
